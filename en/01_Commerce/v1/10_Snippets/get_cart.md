@@ -9,10 +9,10 @@ Added in v0.7.
 ## Usage
 
 ```` html
-[[commerce.get_cart? &tpl=`name-of-a-chunk`]]
-[[commerce.get_cart? &tpl=`name-of-a-chunk` &emptyTpl=`other-chunk`]]
-[[commerce.get_cart? &toPlaceholders=`cart.`]]
-[[commerce.get_cart? &field=`total_formatted`]]
+[[!commerce.get_cart? &tpl=`name-of-a-chunk`]]
+[[!commerce.get_cart? &tpl=`name-of-a-chunk` &emptyTpl=`other-chunk`]]
+[[!commerce.get_cart? &toPlaceholders=`cart.`]]
+[[!commerce.get_cart? &field=`total_formatted`]]
 ````
 
 ## Properties
@@ -22,6 +22,7 @@ Added in v0.7.
 - `&emptyTpl`: the name of a chunk (_not_ a twig template file) used when the cart is empty.
 - `&toPlaceholders`: prefix to use for setting placeholders with all cart information.
 - `&field`: specify an order field to return only that field.
+- `&separator`: string to use to join the product records together, defaults to a newline character. (new in 0.11)
 
 ## Returning information
 

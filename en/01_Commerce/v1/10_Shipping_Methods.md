@@ -4,6 +4,16 @@ Each shipping method can be configured to be available on specific order totals 
 
 All shipping methods can also be enabled only for specific countries, by providing a comma separated list of allowed country codes when editing the shipping method.
 
+For different types of products, you can set up different [Delivery Types](Delivery_Types). Each delivery type will then have its own set of shipping methods to choose. 
+
+[TOC]
+
+## Automatically selected
+
+Commerce (since v0.11) will automatically select the first available shipping method when a customer adds products to their cart. Make sure to set the sortorder on your shipping methods accordingly.
+
+If your shipping method costs or availability depend on where the customer is from, make sure to use modules like Default Address or Autofill GeoIP to provide Commerce with an address to use for the initial selection. 
+
 ## Standard Shipping Method
 
 The standard shipping method defines costs as either a fixed price in cents, a percentage of the order total, or both. 
@@ -23,6 +33,10 @@ The weight-specific shipping method calculates the total order weight. This reli
 The shipping method defines its own weight unit which is used in the conversion and for matching the specified weight brackets.
  
 ![](../images/shipping/shipping-weight-specific.jpg)
+
+## TableRates Shipping Method
+
+Installable as a separate (free) module, the [TableRates shipping method](Modules/Shipping/TableRates) allows you to manage more complex customer-location-plus-weight rules as CSV, inspired by the Magento feature with the same name.
 
 ## Custom Shipping Methods
 

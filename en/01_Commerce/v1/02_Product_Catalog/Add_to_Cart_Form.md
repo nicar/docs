@@ -42,6 +42,12 @@ In a form, that looks somewhat like this. Replace `123` with the ID of your prod
 
 Note that these two form structures cannot be mixed. The `products[id][quantity]` array format takes precedence over the `product` + `quantity` structure.
 
+## Adding custom fields to the order item
+
+Commerce (as of 0.11) supports simple custom fields using the [Item Data Module](../Modules/Cart/ItemData.md). The module allows you to define what field names to accept from the user, and then you can start sending those fields along with the add to cart request. This is great for user comments or simple product variations that have no impact on stock. 
+
+[See the Item Data Module documentation](../Modules/Cart/ItemData.md) for instructions on how to set that up.
+
 ## AJAX
 
 You can also add products to the cart using AJAX. Just serialize the form values, and POST those values to the cart page with an XMLHttpRequest. Instead of HTML, you'll get JSON back. 
@@ -50,7 +56,7 @@ For example the following jQuery snippet can be used to progressively enhance ad
 
 ```` html
 <script type="text/javascript">
-$(document).on('ready', function() {
+$(function() {
     // Grab all forms with a class of `add-to-cart`
     $('form.add-to-cart').on('submit', function(e) {
         // Prevent regular submit
@@ -144,3 +150,13 @@ The JSON returned by the server will look something like this.
   }
 }
 ````
+
+### Other AJAX Cart actions
+
+The following cart actions are available and require the mentioned data
+
+- Add product to cart: `add_to_cart=1` + `products[123]['quantity']=321` or `product=123` and `quantity=321`.
+- Remove item: `remove_item=123` where `123` is the ID of the order item
+- Update cart quantities: `update_cart=1` + object `items[order_item_id] = quantity` 
+- Continue to the checkout (persist order to database and show account step): `checkout=1`
+
